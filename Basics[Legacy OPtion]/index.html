@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue JS Course</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ this.event }}</p>
+      <p>My name is : {{ listnames[1] }}</p>
+      <p>{{ erickFunction() }}</p>
+      <p>{{this.datatoSend}}</p>
+      <h1>{{this.welcome()}}</h1>
+      <p>{{ this.eventhandler()}}</p>
+      <img src="" alt="" />
+      <p v-text="event"></p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </body>
+  <script>
+    const handleFetchdata = () => {
+      return "Jesus est seigneur ";
+    };
+
+    const elonga = 100;
+    const handleerickelnino = () => {
+      return elonga * 1000;
+    };
+    const App = {
+      data() {
+        return {
+          event: "hello world",
+          listnames: ["erick", "elnino"],
+          valuetoPass: elonga,
+          erickFunction: () => {
+            return `${this.event} my name is ${this.listnames[0]} i am from congo but i grew up in SA ${handleerickelnino()}`;
+          },
+          datatoSend: handleFetchdata(),
+          eventhandler() {
+            return this.valuetoPass;
+          },
+        };
+      },
+
+      methods: {
+        welcome() {
+          return `Hello world`;
+        },
+      },
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</html>
