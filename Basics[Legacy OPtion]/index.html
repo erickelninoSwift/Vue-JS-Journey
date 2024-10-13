@@ -7,48 +7,140 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ this.event }}</p>
+      <!-- <p>{{ this.event }}</p>
       <p>My name is : {{ listnames[1] }}</p>
       <p>{{ erickFunction() }}</p>
       <p>{{this.datatoSend}}</p>
       <h1>{{this.welcome()}}</h1>
       <p>{{ this.eventhandler()}}</p>
       <img src="" alt="" />
-      <p v-text="event"></p>
+      <p v-text="event"></p> -->
+      <p>
+         <ul>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            
+         </ul>
+      </p>
+      <p v-show="true">Show it </p>
+      <p v-show="false">Dont Show it </p>
+      <p> {{ cars[0].make }}</p>
+      
+      <!-- Looping -->
+       <ul>
+         <li v-for="(car, index) in cars"> 
+               
+              {{ car.model }} : {{ index  }}
+
+         </li>
+           
+       </ul>
+       <div>
+        <!-- v-once -->
+
+     
+        <p v-once >{{ carname }}</p>
+        <p>{{ carname }}</p>
+        <!-- {{ populateData() }} -->
+       <!-- Onclick event 
+        
+       -->
+       <h2> {{ carname }}</h2>
+       <button v-on:hover="updateName">Click me</button>
+        <div v-on:mousemove="handleCursor" class="box" style="display: flex; justify-content: center; align-items: center;">
+            Jackpot
+        </div>
+        x : {{ x }}
+        y: {{ y }}
+
+        <h1>Hello my name is : {{ yourname }}</h1>
+        <button v-on:click="changeName('Yollande Kasonga', $event)">click me!!</button>
+       </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </body>
   <script>
-    const handleFetchdata = () => {
-      return "Jesus est seigneur ";
-    };
-
-    const elonga = 100;
-    const handleerickelnino = () => {
-      return elonga * 1000;
-    };
+   
     const App = {
+      
       data() {
         return {
           event: "hello world",
           listnames: ["erick", "elnino"],
-          valuetoPass: elonga,
-          erickFunction: () => {
-            return `${this.event} my name is ${this.listnames[0]} i am from congo but i grew up in SA ${handleerickelnino()}`;
-          },
-          datatoSend: handleFetchdata(),
-          eventhandler() {
-            return this.valuetoPass;
-          },
+          carname: 'KIA picanto',
+          yourname:'Jackenson Verdul',
+          x:0,
+          y:0,
+          cars : [
+  {
+    make: 'Toyota',
+    model: 'Camry',
+    year: 2021,
+    price: 24000,
+  },
+  {
+    make: 'Honda',
+    model: 'Accord',
+    year: 2022,
+    price: 26000,
+  },
+  {
+    make: 'Ford',
+    model: 'Mustang',
+    year: 2020,
+    price: 30000,
+  },
+  {
+    make: 'Chevrolet',
+    model: 'Malibu',
+    year: 2021,
+    price: 22000,
+  },
+  {
+    make: 'Tesla',
+    model: 'Model 3',
+    year: 2022,
+    price: 35000,
+  },
+]
         };
       },
-
       methods: {
-        welcome() {
-          return `Hello world`;
-        },
+         populateData(){
+             setTimeout(() =>{
+              this.carname = "Toyota"
+             },2000)
+         },
+         updateName()
+         {
+           setTimeout(() =>{
+              this.carname = 'GMC Suburban'
+           },3000)
+         },
+         handleCursor(event)
+         {
+           this.x = event.clientX;
+           this.y = event.clientY;
+         },
+         changeName(name,event)
+         {
+            console.log(event.target.innerHTML)
+            this.yourname = name
+         }
       },
     };
     Vue.createApp(App).mount("#app");
   </script>
+  <style>
+    .box
+    {
+      background-color: aqua;
+      height: 300px;
+      width: 300px;
+    }
+  </style>
 </html>
